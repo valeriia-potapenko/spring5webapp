@@ -15,7 +15,7 @@ class Author() {
     private var firstName: String? = null
     private var lastName: String? = null
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "authors")
     private var books: Set<Book>? = null
 
     constructor(firstName: String, lastName: String) : this() {

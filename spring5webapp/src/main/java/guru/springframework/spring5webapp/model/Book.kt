@@ -4,6 +4,8 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.JoinTable
 import javax.persistence.ManyToMany
 
 @Entity
@@ -17,6 +19,8 @@ class Book() {
     private var publisher: String? = null
 
     @ManyToMany
+    @JoinTable(name = "author_book", joinColumns = [JoinColumn(name = "book_id")],
+            inverseJoinColumns = [JoinColumn(name = "author_id")])
     private var authors: Set<Author>? = null
 
     constructor(title: String, isbn: String, publisher: String) : this() {
